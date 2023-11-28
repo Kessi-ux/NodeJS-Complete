@@ -1,0 +1,25 @@
+[{
+    "id": 0,
+    "name": "Apple iphone x",
+    "color": "Black",
+    "ROM": 128,
+    "price": 450,
+    "modelName": "iphone se",
+    "modelNo": "MIGHT567",
+    "size": "60cm",
+    "camera": "120MP",
+    "description": "fancy"
+},
+
+{
+    "id": 1,
+    "name": "Apple iphone 11",
+    "color": "Black",
+    "ROM": 256,
+    "price": 600,
+    "modelName": "iphone se",
+    "modelNo": "MIGHT786",
+    "size": "70cm",
+    "camera": "240MP",
+    "description": "sturdy"
+}]
