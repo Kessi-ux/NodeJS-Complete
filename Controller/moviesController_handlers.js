@@ -1,21 +1,6 @@
 const fs = require('fs');
 let movies = JSON.parse(fs.readFileSync('./Data/movies.json'));
 
-exports.checkId = (req, res, next, value) => {
-    console.log('Movie ID is ' + value);
-    
-    //find movie based on id parameter
-    let movie = movies.find(el => el.id === value * 1);
-
-     if(!movie){
-         return res.status(404).json({
-             status: "fail",
-             message: 'Movie with ID ' + value + ' is not found'
-         })
-}
-    next();
-}
-
 exports.getAllMovies = (req, res) => {
     res.status(200).json({
       status: "success",
@@ -34,6 +19,13 @@ exports.getMovie = (req, res) => {
     //find movie based on id parameter
     let movie = movies.find(el => el.id === id)
     
+    if(!movie){
+        return res.status(404).json({
+            status: "fail",
+            message: 'Movie with ID ' + id + ' is not found'
+        })
+    }
+
     //send movie in the response
     res.status(200).json({
         status: "success",
@@ -62,6 +54,13 @@ exports.updateMovie = (req, res) => {
     let id = req.params.id * 1;
     let movieToUpdate = movies.find(el => el.id === id);
 
+    if(!movieToUpdate){
+        return res.status(404).json({
+            status: "fail",
+            message: ' no movie object with ID ' + id + ' is found'
+        })
+    }
+
     let index = movies.indexOf(movieToUpdate); //e.g ID = 4 , index = 3 
     
     Object.assign(movieToUpdate, req.body);
@@ -81,6 +80,13 @@ exports.updateMovie = (req, res) => {
 exports.deleteMovie = (req, res) => {
     const id = req.params.id * 1;
     const movieToDelete = movies.find(el => el.id === id);
+
+    if(!movieToDelete){
+        return res.status(404).json({
+            status: "fail",
+            message: ' No movie with ID ' + id + ' is not found to delete'
+        })
+    }
 
     const index = movies.indexOf(movieToDelete);
 
