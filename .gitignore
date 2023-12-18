@@ -1,2 +1,5 @@
 /node_modules
 /app.js
+/config.env
+/PV-Platform_Insiders/node_modules
+/PV-Platform_Insiders/config.env
